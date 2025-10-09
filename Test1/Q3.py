@@ -1,0 +1,5 @@
+km=int(input("enter the distance in km :"))
+mtr=(km *1000)
+cent=(km*100000)
+print(f'metre is,{mtr}')
+print(f'centimetre is,{cent}')
