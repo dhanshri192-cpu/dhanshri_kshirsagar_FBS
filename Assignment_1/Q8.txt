@@ -1,0 +1,71 @@
+Q8:
+
+
+mysql> create table dept
+    -> (dept_id int, mgr_id int);
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> alter table dept
+    -> add primary key(dept_id,mgr_id);
+Query OK, 0 rows affected (0.07 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc dept;
++---------+------+------+-----+---------+-------+
+| Field   | Type | Null | Key | Default | Extra |
++---------+------+------+-----+---------+-------+
+| dept_id | int  | NO   | PRI | NULL    |       |
+| mgr_id  | int  | NO   | PRI | NULL    |       |
++---------+------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> create table emp
+    -> (empid int,firstname varchar(20), lastname varchar(20), email varchar(20),
+    -> phono varchar(20), hire_date int, job_id int , salary int, mangrid int,deptid int);
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> desc emp;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| empid     | int         | YES  |     | NULL    |       |
+| firstname | varchar(20) | YES  |     | NULL    |       |
+| lastname  | varchar(20) | YES  |     | NULL    |       |
+| email     | varchar(20) | YES  |     | NULL    |       |
+| phono     | varchar(20) | YES  |     | NULL    |       |
+| hire_date | int         | YES  |     | NULL    |       |
+| job_id    | int         | YES  |     | NULL    |       |
+| salary    | int         | YES  |     | NULL    |       |
+| mangrid   | int         | YES  |     | NULL    |       |
+| deptid    | int         | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+10 rows in set (0.00 sec)
+
+mysql> alter table emp
+    -> add foreign key(dept_id, mgr_id)
+    -> references dept(de;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 3
+mysql> alter table emp
+    -> add foreign key(deptid, mangrid)
+    -> references dept(dept_id,mgr_id);
+Query OK, 0 rows affected (0.14 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc emp;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| empid     | int         | YES  |     | NULL    |       |
+| firstname | varchar(20) | YES  |     | NULL    |       |
+| lastname  | varchar(20) | YES  |     | NULL    |       |
+| email     | varchar(20) | YES  |     | NULL    |       |
+| phono     | varchar(20) | YES  |     | NULL    |       |
+| hire_date | int         | YES  |     | NULL    |       |
+| job_id    | int         | YES  |     | NULL    |       |
+| salary    | int         | YES  |     | NULL    |       |
+| mangrid   | int         | YES  |     | NULL    |       |
+| deptid    | int         | YES  | MUL | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+10 rows in set (0.00 sec)
+
+mysql>

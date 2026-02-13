@@ -1,0 +1,17 @@
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| assignment         |
+| bank               |
+| book               |
+| classwork          |
+| homework           |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sakila             |
+| sept25             |
+| sys                |
+| world              |
++--------------------+

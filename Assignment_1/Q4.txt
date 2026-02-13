@@ -1,0 +1,23 @@
+mysql> use assignment;
+Database changed
+mysql> create table job_history
+    -> (employee_id int, start_date varchar(20), end_date varchar(20),department_id int);
+Query OK, 0 rows affected, 2 warnings (0.05 sec)
+
+
+
+
+
+
+
+
+
++---------------+-------------+------+-----+---------+-------+
+| Field         | Type        | Null | Key | Default | Extra |
++---------------+-------------+------+-----+---------+-------+
+| employee_id   | int         | YES  |     | NULL    |       |
+| start_date    | varchar(20) | YES  |     | NULL    |       |
+| end_date      | varchar(20) | YES  |     | NULL    |       |
+| department_id | int         | YES  |     | NULL    |       |
++---------------+-------------+------+-----+---------+-------+
+4 rows in set (0.09 sec)
