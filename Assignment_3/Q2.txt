@@ -1,0 +1,21 @@
+mysql> insert into member
+    -> (member_id, member_name, address)
+    -> values(7,'Ankita','ngp'),
+    -> (8,'Rohit','wardha'),
+    -> (9,'sumit','hingna');
+Query OK, 3 rows affected (0.01 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> select * from member;
++-----------+-------------+---------+---------------+-----------------+-----------+------------------+----------------+
+| member_id | member_name | address | acc_open_date | membership_type | fees_paid | max_book_allowed | penalty_amount |
++-----------+-------------+---------+---------------+-----------------+-----------+------------------+----------------+
+|         2 | Garima sen  | pune    | 2025-12-17    | annual          |      1000 |                3 |           NULL |
+|         3 | Priyal      | Mumbai  | 2025-12-10    | half yearly     |      2000 |                2 |          20.00 |
+|         4 | Priya       | Mumbai  | 2015-11-10    | half yearly     |     20000 |                1 |           NULL |
+|         5 | Pooja       | Mumbai  | 2015-10-10    | half yearly     |     27000 |              110 |           NULL |
+|         6 | Asmita      | NULL    | NULL          | NULL            |      NULL |              110 |           NULL |
+|         7 | Ankita      | ngp     | NULL          | NULL            |      NULL |             NULL |           NULL |
+|         8 | Rohit       | wardha  | NULL          | NULL            |      NULL |             NULL |           NULL |
+|         9 | sumit       | hingna  | NULL          | NULL            |      NULL |             NULL |           NULL |
++-----------+-------------+---------+---------------+-----------------+-----------+------------------+----------------+

@@ -1,0 +1,51 @@
+mysql> create table department
+    -> (department_id int , department_name varchar(20),
+    -> manager_id int, location_id int);
+Query OK, 0 rows affected (0.07 sec)
+
+mysql> insert into department
+    -> values(10, 'Administration', 200, 1700);
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into department
+    -> values(20, 'Marketing', 201, 1800);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into department
+    -> values(30, 'Purchasing', 114, 1700);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into department
+    -> values(40, 'Human Resources', 203, 2400);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into department
+    -> values(50, 'Shipping', 121, 1500);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into department
+    -> values(60, 'IT', 103, 1400);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into department
+    -> values(70, 'Public Relations', 204, 2700);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into department
+    -> values(80, 'Sales', 145, 2500);
+Query OK, 1 row affected (0.01 sec)
+
+
+mysql> select * from department;
++---------------+------------------+------------+-------------+
+| department_id | department_name  | manager_id | location_id |
++---------------+------------------+------------+-------------+
+|            10 | Administration   |        200 |        1700 |
+|            20 | Marketing        |        201 |        1800 |
+|            30 | Purchasing       |        114 |        1700 |
+|            40 | Human Resources  |        203 |        2400 |
+|            50 | Shipping         |        121 |        1500 |
+|            60 | IT               |        103 |        1400 |
+|            70 | Public Relations |        204 |        2700 |
+|            80 | Sales            |        145 |        2500 |
++---------------+------------------+------------+-------------+

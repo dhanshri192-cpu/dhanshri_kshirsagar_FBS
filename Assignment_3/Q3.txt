@@ -1,0 +1,32 @@
+mysql> create table job
+    -> (job_id varchar(20) primary key,
+    -> job_title varchar(40),
+    -> min_salary int,
+    -> max_salary int);
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> insert into job
+    -> values('AD_PRES', 'President', 20000, 40000),
+    -> ('AD_VP', 'Administration Vice president', 15000, 30000),
+    -> ('AD_ASST', 'Administration Assistant', 3000, 6000),
+    -> ('FI_MGR', 'Finance Manager', 8200, 16000),
+    -> ('FI_ACCOUNT', 'Accountant', 4200, 9000),
+    -> ('AC_MGR', 'Accounting Manager',8200, 16000),
+    -> ('AC_ACCOUNT', 'Public Accountant', 4200, 9000),
+    -> ('SA_MAN', 'Sales Manager', 10000, 20000);
+Query OK, 8 rows affected (0.01 sec)
+Records: 8  Duplicates: 0  Warnings: 0
+
+mysql> select * from job;
++------------+-------------------------------+------------+------------+
+| job_id     | job_title                     | min_salary | max_salary |
++------------+-------------------------------+------------+------------+
+| AC_ACCOUNT | Public Accountant             |       4200 |       9000 |
+| AC_MGR     | Accounting Manager            |       8200 |      16000 |
+| AD_ASST    | Administration Assistant      |       3000 |       6000 |
+| AD_PRES    | President                     |      20000 |      40000 |
+| AD_VP      | Administration Vice president |      15000 |      30000 |
+| FI_ACCOUNT | Accountant                    |       4200 |       9000 |
+| FI_MGR     | Finance Manager               |       8200 |      16000 |
+| SA_MAN     | Sales Manager                 |      10000 |      20000 |
++------------+-------------------------------+------------+------------+

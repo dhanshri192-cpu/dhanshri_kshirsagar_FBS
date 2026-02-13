@@ -1,0 +1,13 @@
+mysql> update emp_copy set salary= salary*0.10;
+Query OK, 3 rows affected (0.01 sec)
+Rows matched: 4  Changed: 3  Warnings: 0
+
+mysql> select * from emp_copy;
++-----+---------+--------+--------------+--------+---------+------+--------------+
+| eid | ename   | gender | email        | salary | address | dno  | joining_date |
++-----+---------+--------+--------------+--------+---------+------+--------------+
+|   2 | anjali  | f      | anjali@gmail |   2500 | amt     |    2 |         NULL |
+|   3 | prita   | f      | prita@gmail  |   6700 | pune    | NULL |         NULL |
+|   4 | prajkta | f      | praju@gmail  |   2300 | pune    |    1 |         NULL |
+|   5 | amita   | f      | NULL         |   NULL | pune    | NULL |         NULL |
++-----+---------+--------+--------------+--------+---------+------+--------------+
