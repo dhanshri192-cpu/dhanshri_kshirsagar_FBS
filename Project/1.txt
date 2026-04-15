@@ -1,0 +1,539 @@
+e changed
+mysql> create table patient
+    -> (pid int, pname varchar(20), address varchar(20), age int, weight int, height decimal(4,1), bloodgrp varchar(20));
+Query OK, 0 rows affected (0.14 sec)
+
+mysql> alter table patient
+    -> add primary key(pid);
+Query OK, 0 rows affected (0.14 sec)
+
+mysql> alter table patient
+    -> add column gender varchar(20);
+mysql> insert into patient
+    -> values(1, 'Anuj', 'Nagpur', 20, 49, 5, 'O+', 'm');
+mysql> insert into patient
+    -> values(2, 'Ankita', 'wardha', 25, 50, 5.5, 'B+', 'f');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into patient
+    -> values(3, 'Bhumika', 'Pune', 30, 59, 6, 'O+', 'f'),
+    -> (4, 'Bhushan', 'Pune', 40, 69, 5.6, 'O+', 'm');
+Query OK, 2 rows affected (0.01 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+insert into patient
+    -> values(5, 'yash', 'chandrapur', 27, 55, 5.7, 'A+', 'm'),
+    -> (6, 'om', 'chandrapur', 18, 58, 5.3, 'AB+', 'm'),
+    -> (7, 'Namoshri', 'Beed', 19, 54, 5, 'B+', 'f');
+
+ insert into patient
+    -> values(8, 'yuvti', 'Thane', 27, 65, 5.4, 'B+', 'f'),
+    -> (9, 'Nikhil', 'Buldhana', 30, 60, 5, 'O+', 'm'),
+    -> (10, 'Lokesh', 'Nanded', 27, 52, 4.6, 'B+', 'm');
+
+create table Doctor
+    -> (did int, dname varchar(20), department varchar(20), mobno varchar(20), fees int, experience int, qualification varchar(20));
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> insert into Doctor
+    -> values(101, 'DR.Game', 'cardiography', '2345678995', 500, 4, 'MBBS');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Doctor
+    -> values(102, 'DR.Rade', 'orthography', '956577337', 1000, 2, 'MD'),
+    -> (103, 'DR. lalwani', 'dentist', '9567580337',1200, 1, 'MD'),
+    -> (104, 'Dr. Loda', 'Neurologist', '8676548792', 3000, 5, 'MBBS');
+Query OK, 3 rows affected (0.01 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> alter table doctor
+    -> add primary key(did);
+Query OK, 0 rows affected (0.09 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+
+
+
+
+mysql> alter table doctor
+    -> add primary key(did);
+Query OK, 0 rows affected (0.09 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> insert into Doctor
+    -> values(105, 'DR. Bhoyar', 'Dermatologist', '956589337', 1000, 8, 'BHMS'),
+    -> (106, 'Dr. Choudhary', 'Ophthalmologist', '8758393480', 900, 6, 'BAMS'),
+    -> (107, 'Dr. Kotari', 'ENT specialist', '9058763480', 300, 9, 'MD'),
+    -> (108, 'Dr. Kakade', 'Gynecologist', '985675644', 900, 7, 'MBBS'),
+    ->
+    -> (109, 'Dr. Dubey', 'pediatrician', '987665544', 800, 4, 'MD');
+Query OK, 5 rows affected (0.01 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql>10, 'Dr. sayankar', 'pulmonologist', '887678844', 1000, 1, 'MD')' at line 2
+mysql> insert into Doctor
+    -> values(110, 'Dr. sayankar', 'pulmonologist', '887678844', 1000, 1, 'MD');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into Doctor
+    -> values(111, 'Dr. kalode', 'gastroentrologist', '80864543652', 9000, 8, 'MBBS');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Doctor
+    -> values(112, 'Dr. shelke', 'psychiatrist', '890099736', 20000, 1, 'MBBS');
+Query OK, 1 row affected (0.01 sec)
+
+
+mysql> create table encounter
+    -> (eid int primary key,
+    -> edate date, time int,
+    -> dignosis varchar(20),
+    -> precautions varchar(20),
+    -> pid int , did int,
+    -> foreign key (pid) references patient(pid),
+    -> foreign key (did) references doctor(did));
+Query OK, 0 rows affected (0.07 sec)
+
+
+mysql> insert into encounter
+    -> values(1, '2024-09-8', '4am', 'fever', 'rest', 1, 110);
+
+
+mysql> insert into encounter
+    -> values(2, '2025-09-18', '5', 'cough', 'rest', 2, 102),
+    -> (3, '2025-7-9', '9', 'headche', 'sleep', 5, 104);
+Query OK, 2 rows affected (0.01 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+insert into encounter
+    -> values(4, '2025-7-29', '8', 'Bp', 'exercise', 3, 101),
+    -> (5, '2023-7-9', '11', 'earpain', 'exercise', 7, 107),
+    -> (6, '2022-7-19', '1', 'migraine', 'sleep', 9, 104),
+    -> (7, '2024-6-9', '3', 'allergy', 'avoid dust', 8, 107);
+Query OK, 4 rows affected (0.01 sec)
+mysql> insert into encounter
+    -> values(8, '2023-6-29', '7', 'diabetes', 'diet', 10, 111),
+    -> (9, '2024-16-7', '6', 'teethpain', 'avoid sweet', 3, 103);
+ERROR 1292 (22007): Incorrect date value: '2024-16-7' for column 'edate' at row 2
+mysql> insert into encounter
+    -> values(8, '2023-6-29', '7', 'diabetes', 'diet', 10, 111),
+    -> (9, '2024-1-7', '6', 'teethpain', 'avoid sweet', 3, 103);
+Query OK, 2 rows affected (0.01 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> insert into encounter
+    -> values(10, '2023-6-9', '5', 'chestpain', 'rest', 8, 101),
+    -> (11, '2020-6-29', '12', 'legpain', 'rest', 4, 102);
+
+
+mysql> table encounter;
++-----+------------+------+-----------+-------------+------+------+
+| eid | edate      | time | dignosis  | precautions | pid  | did  |
++-----+------------+------+-----------+-------------+------+------+
+|   2 | 2025-09-18 |    5 | cough     | rest        |    2 |  102 |
+|   3 | 2025-07-09 |    9 | headche   | sleep       |    5 |  104 |
+|   4 | 2025-07-29 |    8 | Bp        | exercise    |    3 |  101 |
+|   5 | 2023-07-09 |   11 | earpain   | exercise    |    7 |  107 |
+|   6 | 2022-07-19 |    1 | migraine  | sleep       |    9 |  104 |
+|   7 | 2024-06-09 |    3 | allergy   | avoid dust  |    8 |  107 |
+|   8 | 2023-06-29 |    7 | diabetes  | diet        |   10 |  111 |
+|   9 | 2024-01-07 |    6 | teethpain | avoid sweet |    3 |  103 |
+|  10 | 2023-06-09 |    5 | chestpain | rest        |    8 |  101 |
+|  11 | 2020-06-29 |   12 | legpain   | rest        |    4 |  102 |
++-----+------------+------+-----------+-------------+------+------+
+10 rows in set (0.00 sec)
+
+mysql> table patient;
++-----+----------+------------+------+--------+--------+----------+--------+
+| pid | pname    | address    | age  | weight | height | bloodgrp | gender |
++-----+----------+------------+------+--------+--------+----------+--------+
+|   1 | Anuj     | Nagpur     |   20 |     49 |    5.0 | O+       | m      |
+|   2 | Ankita   | wardha     |   25 |     50 |    5.5 | B+       | f      |
+|   3 | Bhumika  | Pune       |   30 |     59 |    6.0 | O+       | f      |
+|   4 | Bhushan  | Pune       |   40 |     69 |    5.6 | O+       | m      |
+|   5 | yash     | chandrapur |   27 |     55 |    5.7 | A+       | m      |
+|   6 | om       | chandrapur |   18 |     58 |    5.3 | AB+      | m      |
+|   7 | Namoshri | Beed       |   19 |     54 |    5.0 | B+       | f      |
+|   8 | yuvti    | Thane      |   27 |     65 |    5.4 | B+       | f      |
+|   9 | Nikhil   | Buldhana   |   30 |     60 |    5.0 | O+       | m      |
+|  10 | Lokesh   | Nanded     |   27 |     52 |    4.6 | B+       | m      |
++-----+----------+------------+------+--------+--------+----------+--------+
+10 rows in set (0.01 sec)
+
+mysql> table doctor;
++-----+---------------+-------------------+-------------+-------+------------+---------------+
+| did | dname         | department        | mobno       | fees  | experience | qualification |
++-----+---------------+-------------------+-------------+-------+------------+---------------+
+| 101 | DR.Game       | cardiography      | 2345678995  |   500 |          4 | MBBS          |
+| 102 | DR.Rade       | orthography       | 956577337   |  1000 |          2 | MD            |
+| 103 | DR. lalwani   | dentist           | 9567580337  |  1200 |          1 | MD            |
+| 104 | Dr. Loda      | Neurologist       | 8676548792  |  3000 |          5 | MBBS          |
+| 105 | DR. Bhoyar    | Dermatologist     | 956589337   |  1000 |          8 | BHMS          |
+| 106 | Dr. Choudhary | Ophthalmologist   | 8758393480  |   900 |          6 | BAMS          |
+| 107 | Dr. Kotari    | ENT specialist    | 9058763480  |   300 |          9 | MD            |
+| 108 | Dr. Kakade    | Gynecologist      | 985675644   |   900 |          7 | MBBS          |
+| 109 | Dr. Dubey     | pediatrician      | 987665544   |   800 |          4 | MD            |
+| 110 | Dr. sayankar  | pulmonologist     | 887678844   |  1000 |          1 | MD            |
+| 111 | Dr. kalode    | gastroentrologist | 80864543652 |  9000 |          8 | MBBS          |
+| 112 | Dr. shelke    | psychiatrist      | 890099736   | 20000 |          1 | MBBS          |
++-----+---------------+-------------------+-------------+-------+------------+---------------+
+12 rows in set (0.00 sec)
+
+mysql> insert into test
+    -> values(1, 'bloodtest', '500', 'pathology', 'completed', 'fasting', 'normal'),
+    -> (2, 'x-ray', '800', 'Radiology', 'completed', 'Remove metal', 'clear'),
+    -> (3, 'CT-scan', '2500', 'Radiology', 'pending', 'empty stomach', 'pending'),
+    -> (4, 'MRI', '5000', 'Radiology', 'completed', 'no metal', 'normal'),
+    -> (5, 'ECG', '600', 'Cardiology', 'completed', 'rest', 'normal'),
+    -> (6, 'sugar test', '200', 'pathology', 'completed', 'fasting', 'high');
+Query OK, 6 rows affected (0.02 sec)
+Records: 6  Duplicates: 0  Warnings: 0
+
+mysql> insert into test
+    -> values(7, 'Echo', '1500', 'cardiology', 'pending', 'no caffeine', 'pending'),
+    -> (8, 'urine test', '300', 'pathology', 'completed', 'morning sample', 'normal'),
+    -> (9, 'covid test', '400', 'pathology', 'completed', 'nasal swab', 'negative'),
+    -> (10, 'lipid profile', '1000', 'pathology', 'completed','24hr fasting', 'normal');
+Query OK, 4 rows affected (0.01 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> table test;
++--------+---------------+---------+------------+------------+----------------+----------+
+| testid | tname         | charges | type       | teststatus | instruction    | result   |
++--------+---------------+---------+------------+------------+----------------+----------+
+|      1 | bloodtest     | 500     | pathology  | completed  | fasting        | normal   |
+|      2 | x-ray         | 800     | Radiology  | completed  | Remove metal   | clear    |
+|      3 | CT-scan       | 2500    | Radiology  | pending    | empty stomach  | pending  |
+|      4 | MRI           | 5000    | Radiology  | completed  | no metal       | normal   |
+|      5 | ECG           | 600     | Cardiology | completed  | rest           | normal   |
+|      6 | sugar test    | 200     | pathology  | completed  | fasting        | high     |
+|      7 | Echo          | 1500    | cardiology | pending    | no caffeine    | pending  |
+|      8 | urine test    | 300     | pathology  | completed  | morning sample | normal   |
+|      9 | covid test    | 400     | pathology  | completed  | nasal swab     | negative |
+|     10 | lipid profile | 1000    | pathology  | completed  | 24hr fasting   | normal   |
++--------+---------------+---------+------------+------------+----------------+----------+
+10 rows in set (0.00 sec)
+
+mysql>mysql> insert into encountertest
+    -> values(1, '2024-01-10', 10, 'normal', 'ok', 1,3);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into encountertest
+    -> values(2, '2024-2-9', 11, 'normal', 'good', 2,3),
+    -> (3, '2024-6-8', 1, 'clear', 'no issue', 3,4),
+    -> (4, '2025-6-18', 4, 'pending', 'waiting', 5,2),
+    -> (5, '2025-8-28', 5, 'normal', 'stable', 4,5),
+    -> (6, '2020-5-8', 6, 'normal', 'fine', 1,5),
+    -> (7, '2024-5-6', 8, 'normal', 'ok', 7,8),
+    -> (8, '2023-5-16', 2, 'high', 'monitor', 6,9),
+    -> (9, '2022-3-26', 3, 'high', 'under process', 7,7),
+    -> (10, '2022-2-6', 3, 'negative', 'safe', 10,7);
+Query OK, 9 rows affected (0.01 sec)
+Records: 9  Duplicates: 0  Warnings: 0
+
+mysql> table encountertest;
++------+------------+------+----------+---------------+--------+------+
+| etid | date       | time | result   | remarks       | testid | eid  |
++------+------------+------+----------+---------------+--------+------+
+|    1 | 2024-01-10 |   10 | normal   | ok            |      1 |    3 |
+|    2 | 2024-02-09 |   11 | normal   | good          |      2 |    3 |
+|    3 | 2024-06-08 |    1 | clear    | no issue      |      3 |    4 |
+|    4 | 2025-06-18 |    4 | pending  | waiting       |      5 |    2 |
+|    5 | 2025-08-28 |    5 | normal   | stable        |      4 |    5 |
+|    6 | 2020-05-08 |    6 | normal   | fine          |      1 |    5 |
+|    7 | 2024-05-06 |    8 | normal   | ok            |      7 |    8 |
+|    8 | 2023-05-16 |    2 | high     | monitor       |      6 |    9 |
+|    9 | 2022-03-26 |    3 | high     | under process |      7 |    7 |
+|   10 | 2022-02-06 |    3 | negative | safe          |     10 |    7 |
++------+------------+------+----------+---------------+--------+--------
+
+
+
+mysql> select * from medicalhistory;
++------+------+----------+---------+
+| hid  | pid  | dignosis | surgery |
++------+------+----------+---------+
+|    1 |    1 | Diabetes | No      |
++------+------+----------+---------+
+1 row in set (0.00 sec)
+
+mysql> insert into medicalhistory
+    -> values(2, 3, 'Asthma', 'No'),
+    -> (3, 2, 'facture', 'yes'),
+    -> (4, 5, 'kindneystone', 'yes'),
+    -> (5, 7, 'allergy', 'no'),
+    -> (6, 8, 'fever', 'no');
+Query OK, 5 rows affected (0.01 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> insert into medicalhistory
+    -> values(7, 4, 'backpain', 'No'),
+    -> (8, 8, 'cold', 'no');
+Query OK, 2 rows affected (0.01 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> insert into medicalhistory
+    -> values(9, 10, 'backpain', 'No'),
+    -> (10, 9, 'cough', 'no');
+Query OK, 2 rows affected (0.01 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> table medicalhistrory;
+ERROR 1146 (42S02): Table 'sept25.medicalhistrory' doesn't exist
+mysql> table medicalhistory;
++------+------+--------------+---------+
+| hid  | pid  | dignosis     | surgery |
++------+------+--------------+---------+
+|    1 |    1 | Diabetes     | No      |
+|    2 |    3 | Asthma       | No      |
+|    3 |    2 | facture      | yes     |
+|    4 |    5 | kindneystone | yes     |
+|    5 |    7 | allergy      | no      |
+|    6 |    8 | fever        | no      |
+|    7 |    4 | backpain     | No      |
+|    8 |    8 | cold         | no      |
+|    9 |   10 | backpain     | No      |
+|   10 |    9 | cough        | no      |
++------+------+--------------+---------+
+
+
+
+
+
+mysql> create table medicine
+    -> (mid int, expdate date, mrp int, instruction varchar(20), sideeffect varchar(20),
+    -> content varchar(20));
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> insert into medicine
+    -> values(1, '2027-6-9', 50, 'after food', 'nausea'),
+    -> (2, '2027-6-19', 70, 'after food', 'headache'),
+    -> (3, '2027-7-1', 80, 'morning', 'allergy'),
+    -> (4, '2026-7-1', 100, 'night', 'sleepy');
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> insert into medicine
+    -> values(1, '2027-6-9', 50, 'after food', 'nausea', 'paracetomal'),
+    -> (2, '2027-6-19', 70, 'after food', 'headache', 'pacimol'),
+    -> (3, '2027-7-1', 80, 'morning', 'allergy', 'antacid'),
+    -> (4, '2026-7-1', 100, 'night', 'sleepy', 'coughsyrup');
+Query OK, 4 rows affected (0.01 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> insert into medicine
+    -> values(5, '2026-6-19', 59, 'after food', 'no', 'calcium'),
+    -> (6, '2026-7-11', 100, 'night', 'blurvission', 'bp');
+Query OK, 2 rows affected (0.01 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> insert into medicine
+    -> values(7, '2026-9-29', 69, 'before food', 'no', 'ors'),
+    -> (8, '2027-7-6', 150, 'twice day', 'weakness', 'antibiotic');
+Query OK, 2 rows affected (0.01 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> insert into medicine
+    -> values(9, '2026-3-4', 90, 'before food', 'no', 'cetrizin'),
+    -> (10, '2028-7-6', 200, 'twice day', 'weakness', 'antibiotic');
+Query OK, 2 rows affected (0.00 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+
+
+select mid, count(*)
+    -> from medicine
+    -> group by mid
+    -> having count(*)>1;
+Empty set (0.02 sec)
+
+mysql> alter table medicine
+    -> modify mid int not null,
+    -> add primary key (mid);
+Query OK, 0 rows affected (0.08 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+
+
+
+mysql> alter table prescription
+    -> add constraint fk_medicine
+    -> foreign key(mid)
+    -> references medicine(mid);
+Query OK, 0 rows affected (0.11 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+mysql>
+
+
+mysql> alter table prescription
+    -> add pid int not null auto_increment primary key;
+Query OK, 0 rows affected (0.11 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql>  table prescription;
++------+------+------+------------+----------------+-------------+-----+
+| eid  | mid  | time | date       | numberofdosage | instruction | pid |
++------+------+------+------------+----------------+-------------+-----+
+|    2 |    2 |    8 | 2020-08-12 |              2 | after food  |   1 |
+|    4 |    1 |    1 | 2022-08-12 |              1 | before food |   2 |
+|    3 |    4 |    9 | 2020-08-12 |              2 | night       |   3 |
++------+------+------+------------+----------------+-------------+-----+
+3 rows in set (0.00 sec)
+
+mysql> insert into prescription
+    -> values(5, 3, 1,  '2020-08-12', 2 , 'after food', 4),
+    -> (6, 5, 1,  '2020-7-9', 2 , 'after food', 5),
+    -> (7, 7, 2,  '2020-2-3', 3 , 'after food', 6),
+    -> (8, 9, 3,  '2021-12-3', 1 , 'morning', 7);
+Query OK, 4 rows affected (0.01 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> insert into prescription
+    -> values(9, 1, 1,  '2024-8-3', 2 , 'after food', 8),
+    -> (8, 4, 11,  '2020-12-3', 1 , 'morning', 9);
+Query OK, 2 rows affected (0.01 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> insert into prescription
+    -> values(10, 10, 1,  '2024-8-3', 2 , 'after food', 10);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> table prescription;
++------+------+------+------------+----------------+-------------+-----+
+| eid  | mid  | time | date       | numberofdosage | instruction | pid |
++------+------+------+------------+----------------+-------------+-----+
+|    2 |    2 |    8 | 2020-08-12 |              2 | after food  |   1 |
+|    4 |    1 |    1 | 2022-08-12 |              1 | before food |   2 |
+|    3 |    4 |    9 | 2020-08-12 |              2 | night       |   3 |
+|    5 |    3 |    1 | 2020-08-12 |              2 | after food  |   4 |
+|    6 |    5 |    1 | 2020-07-09 |              2 | after food  |   5 |
+|    7 |    7 |    2 | 2020-02-03 |              3 | after food  |   6 |
+|    8 |    9 |    3 | 2021-12-03 |              1 | morning     |   7 |
+|    9 |    1 |    1 | 2024-08-03 |              2 | after food  |   8 |
+|    8 |    4 |   11 | 2020-12-03 |              1 | morning     |   9 |
+|   10 |   10 |    1 | 2024-08-03 |              2 | after food  |  10 |
++------+------+------+------------+----------------+-------------+-----+
+
+
+mysql> table doctor;
++-----+---------------+-------------------+-------------+-------+------------+---------------+
+| did | dname         | department        | mobno       | fees  | experience | qualification |
++-----+---------------+-------------------+-------------+-------+------------+---------------+
+| 101 | DR.Game       | cardiography      | 2345678995  |   500 |          4 | MBBS          |
+| 102 | DR.Rade       | orthography       | 956577337   |  1000 |          2 | MD            |
+| 103 | DR. lalwani   | dentist           | 9567580337  |  1200 |          1 | MD            |
+| 104 | Dr. Loda      | Neurologist       | 8676548792  |  3000 |          5 | MBBS          |
+| 105 | DR. Bhoyar    | Dermatologist     | 956589337   |  1000 |          8 | BHMS          |
+| 106 | Dr. Choudhary | Ophthalmologist   | 8758393480  |   900 |          6 | BAMS          |
+| 107 | Dr. Kotari    | ENT specialist    | 9058763480  |   300 |          9 | MD            |
+| 108 | Dr. Kakade    | Gynecologist      | 985675644   |   900 |          7 | MBBS          |
+| 109 | Dr. Dubey     | pediatrician      | 987665544   |   800 |          4 | MD            |
+| 110 | Dr. sayankar  | pulmonologist     | 887678844   |  1000 |          1 | MD            |
+| 111 | Dr. kalode    | gastroentrologist | 80864543652 |  9000 |          8 | MBBS          |
+| 112 | Dr. shelke    | psychiatrist      | 890099736   | 20000 |          1 | MBBS          |
++-----+---------------+-------------------+-------------+-------+------------+---------------+
+12 rows in set (0.01 sec)
+
+mysql> alter table doctor
+    -> modify column dname varchar(20) not null;
+Query OK, 0 rows affected (0.08 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table doctor
+    -> modify column mobno varchar(20) unique;
+Query OK, 0 rows affected (0.06 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table doctor
+    -> modify column department varchar(20) unique;
+Query OK, 0 rows affected (0.05 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> table encounter;
++-----+------------+------+-----------+-------------+------+------+
+| eid | edate      | time | dignosis  | precautions | pid  | did  |
++-----+------------+------+-----------+-------------+------+------+
+|   2 | 2025-09-18 |    5 | cough     | rest        |    2 |  102 |
+|   3 | 2025-07-09 |    9 | headche   | sleep       |    5 |  104 |
+|   4 | 2025-07-29 |    8 | Bp        | exercise    |    3 |  101 |
+|   5 | 2023-07-09 |   11 | earpain   | exercise    |    7 |  107 |
+|   6 | 2022-07-19 |    1 | migraine  | sleep       |    9 |  104 |
+|   7 | 2024-06-09 |    3 | allergy   | avoid dust  |    8 |  107 |
+|   8 | 2023-06-29 |    7 | diabetes  | diet        |   10 |  111 |
+|   9 | 2024-01-07 |    6 | teethpain | avoid sweet |    3 |  103 |
+|  10 | 2023-06-09 |    5 | chestpain | rest        |    8 |  101 |
+|  11 | 2020-06-29 |   12 | legpain   | rest        |    4 |  102 |
++-----+------------+------+-----------+-------------+------+------+
+10 rows in set (0.01 sec)
+
+mysql> alter table encounter
+    -> modify column dignosis varchar(20) not null;
+Query OK, 0 rows affected (0.12 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> table test;
++--------+---------------+---------+------------+------------+----------------+----------+
+| testid | tname         | charges | type       | teststatus | instruction    | result   |
++--------+---------------+---------+------------+------------+----------------+----------+
+|      1 | bloodtest     | 500     | pathology  | completed  | fasting        | normal   |
+|      2 | x-ray         | 800     | Radiology  | completed  | Remove metal   | clear    |
+|      3 | CT-scan       | 2500    | Radiology  | pending    | empty stomach  | pending  |
+|      4 | MRI           | 5000    | Radiology  | completed  | no metal       | normal   |
+|      5 | ECG           | 600     | Cardiology | completed  | rest           | normal   |
+|      6 | sugar test    | 200     | pathology  | completed  | fasting        | high     |
+|      7 | Echo          | 1500    | cardiology | pending    | no caffeine    | pending  |
+|      8 | urine test    | 300     | pathology  | completed  | morning sample | normal   |
+|      9 | covid test    | 400     | pathology  | completed  | nasal swab     | negative |
+|     10 | lipid profile | 1000    | pathology  | completed  | 24hr fasting   | normal   |
++--------+---------------+---------+------------+------------+----------------+----------+
+10 rows in set (0.01 sec)
+
+mysql> alter table test
+    -> modify column tname varchar(20) not null;
+Query OK, 0 rows affected (0.09 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table test
+    -> modify column teststatus varchar(20) not null;
+Query OK, 0 rows affected (0.08 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> table encountertest;
++------+------------+------+----------+---------------+--------+------+
+| etid | date       | time | result   | remarks       | testid | eid  |
++------+------------+------+----------+---------------+--------+------+
+|    1 | 2024-01-10 |   10 | normal   | ok            |      1 |    3 |
+|    2 | 2024-02-09 |   11 | normal   | good          |      2 |    3 |
+|    3 | 2024-06-08 |    1 | clear    | no issue      |      3 |    4 |
+|    4 | 2025-06-18 |    4 | pending  | waiting       |      5 |    2 |
+|    5 | 2025-08-28 |    5 | normal   | stable        |      4 |    5 |
+|    6 | 2020-05-08 |    6 | normal   | fine          |      1 |    5 |
+|    7 | 2024-05-06 |    8 | normal   | ok            |      7 |    8 |
+|    8 | 2023-05-16 |    2 | high     | monitor       |      6 |    9 |
+|    9 | 2022-03-26 |    3 | high     | under process |      7 |    7 |
+|   10 | 2022-02-06 |    3 | negative | safe          |     10 |    7 |
++------+------------+------+----------+---------------+--------+------+
+10 rows in set (0.01 sec)
+
+mysql> alter table encountertest
+    -> modify column result varchar(20) not null;
+Query OK, 0 rows affected (0.10 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+select p.pname, p.pid, m.surgery from patient p inner join medicalhistory m
+    -> on p.pid=m.pid
+    -> where p.age>20;
++---------+-----+---------+
+| pname   | pid | surgery |
++---------+-----+---------+
+| Ankita  |   2 | yes     |
+| Bhumika |   3 | No      |
+| Bhushan |   4 | No      |
+| yash    |   5 | yes     |
+| yuvti   |   8 | no      |
+| yuvti   |   8 | no      |
+| Nikhil  |   9 | no      |
+| Lokesh  |  10 | No      |
++---------+-----+---------+
+
+
+create table procedure_patient
+    -> (procedureid int primary key, pid int, procedurename varchar(20), fees int, time int, detalis varchar(20),
+    -> foreign key(pid) references patient(pid));
+Query OK, 0 rows affected (0.51 sec)
